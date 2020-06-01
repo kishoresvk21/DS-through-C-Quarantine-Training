@@ -1,0 +1,95 @@
+2.
+#include<stdio.h>
+void main()
+{
+	int i,j,n,a[20],temp1,temp2;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	temp1=a[0];
+	temp2=a[0];
+	for(i=0;i<n;i++)
+	{
+		if(temp1<a[i])
+		{
+			temp1=a[i];
+		}
+		if(a[i]<0)
+		{
+			if(-a[i]<temp2)
+			{
+				temp2=a[i];
+			}
+		}
+	}
+	printf("%d %d",temp1,temp2);
+}
+3.
+#include<stdio.h>
+void main()
+{
+	int i,n,sum=0,temp=0,a[30],b[20];
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		sum=0;
+		while(a[i]!=0)
+		{
+			temp=a[i]%10;
+			sum=sum+temp;
+			a[i]=(int)a[i]/10;
+		}
+		b[i]=sum;
+	}
+	temp=b[0];
+	for(i=0;i<n;i++)
+	{
+		if(temp>b[i])
+		{
+			temp=b[i];
+		}
+	}
+	printf("%d",temp);
+}
+
+1.
+#include<stdio.h>
+void main()
+{
+	int a[20],i,j,n,min=0,diff;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			diff=a[i]-a[j];
+			if(min>diff && diff>=0)
+			{
+				min=diff;
+			}
+		}
+	}
+	printf("%d",min);
+}
+
+::APTITUDE::
+1.180
+2.6384
+3.42
+4.2100
+5.72
+6.48000
+7.72
+8.
+9.927
+10.150

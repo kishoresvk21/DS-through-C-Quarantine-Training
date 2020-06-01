@@ -1,0 +1,149 @@
+1.
+   0
+  010
+ 01210
+0123210
+ 01210
+  010
+   0
+
+
+#include<stdio.h>
+void main()
+{
+	int i,j,n=7,t,e,br,val;
+	t=(int)n/2+2;
+	e=t+1;
+	br=(int)n/2+1;
+	for(i=1;i<=br;i++)
+	{
+		val=0;
+		if(i>1)
+		{
+			e+=2;
+		}
+		for(j=1;j<=n;j++)
+		{
+			if(i+j<t ||i+j>=e)
+			{
+				printf(" ");
+			}
+			else if(j<=br)
+			{
+				printf("%d",val);
+				val++;
+			}
+			else if(j>br)
+			{
+				printf("%d",val-2);
+				val--;
+			}
+		}
+		printf("\n");
+	}
+	t=(int)n/2;
+	e=t;
+	for(i=1;i<=t;i++)
+	{
+		val=0;
+		if(i>1)
+		{
+			e+=2;
+		}
+		for(j=1;j<=n;j++)
+		{
+			if(i+j<e ||i+j>n)
+			{
+				printf(" ");
+			}
+			else if(j<=t+1)
+			{
+				printf("%d",val);
+				val++;
+			}
+			else if(j>t+1)
+			{
+				printf("%d",val-2);
+				val--;
+			}
+		}
+		printf("\n");
+	}
+}
+
+2.
+
+1
+123
+12345
+1234567
+12345
+123
+1
+
+
+#include<stdio.h>
+void main()
+{
+	int i,j,n=7,e=1,t;
+	t=(int)n/2+1;
+	for(i=1;i<=t;i++)
+	{
+		for(j=1;j<=e;j++)
+		{
+			printf("%d",j);
+		}
+		e+=2;
+		printf("\n");
+	}
+	e-=4;
+	for(i=1;i<=n-t;i++)
+	{
+		for(j=1;j<=e;j++)
+		{
+			printf("%d",j);
+		}
+		e-=2;
+		printf("\n");
+	}
+}
+
+3.pascal's traingle:
+#include<stdio.h>
+void main()
+{
+	int i,j,n=6,k,val=1;
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n-i;j++)
+		{
+			printf(" ");
+		}
+		for(k=0;k<=i;k++)
+		{
+			if(k==1 || i==1)
+			{
+				val=1;
+			}
+			else
+			{
+				val=val*(i-k+1)/k;
+				printf("%4d",val);
+			}
+		}
+		printf("\n");
+	}
+}
+
+::::APTITUDE::::
+1.BILLA
+2.12
+3.J
+4.Q
+5.109
+6.NEITHER 1 AND 2
+7.II
+8.BOTH
+9.5
+10.C
+

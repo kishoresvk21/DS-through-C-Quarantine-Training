@@ -1,0 +1,224 @@
+1.
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int data;
+	struct node* RL;
+	struct node *LL;
+}node;
+struct node *head=NULL;
+void insert(int ele);
+void print();
+void insertwithpos(int ele,int pos);
+void main()
+{
+	int i,n,pos,ele;
+	printf("Input the number of nodes:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&ele);
+		insert(ele);
+	}
+	printf("position to insert a new node:");
+	scanf("%d",&pos);
+	printf("New node data:");
+	scanf("%d",&ele);
+	insertwithpos(ele,pos);
+	printf("After insertion the new list are:\n");
+	print();
+}
+void insert(int ele)
+{
+	node *newn=(node *)malloc(sizeof(node));
+	newn->data=ele;
+	if(head==NULL)
+	{
+		newn->RL=head;
+		newn->LL=head;
+		head=newn;
+	}
+	else
+	{
+		node *itr=head;
+		while(itr->RL!=NULL)
+		{
+			itr=itr->RL;
+		}
+		itr->RL=newn;
+		newn->LL=itr;
+		newn->RL=NULL;
+		
+	}
+}
+void print()
+{
+	node *temp=(node *)malloc(sizeof(node));
+	temp=head;
+	while(temp!=NULL)
+	{
+		printf("%d\n",temp->data);
+		temp=temp->RL;
+	}
+}
+void insertwithpos(int ele,int pos)
+{
+	int i;
+	node *newn=(node *)malloc(sizeof(node));
+	node *itr=head;
+	newn->data=ele;
+	if(pos==1)
+	{
+		head->LL=newn;
+		newn->LL=NULL;
+		newn->RL=head;
+		head=newn;
+	}
+	else
+	{
+		for(i=0;i<pos-2;i++)
+		{
+			itr=itr->RL;
+		}
+		newn->LL=itr;
+		newn->RL=itr->RL;
+		itr->RL=newn;
+		newn->RL->LL=newn;
+	}
+}
+output:
+Input the number of nodes:4
+6
+9
+4
+1
+position to insert a new node:3
+New node data:5
+After insertion the new list are:
+6
+9
+5
+4
+1
+
+***************
+2,3:MAXIMUM ELEMENT AND POS OF MINIMUM ELEMENT::
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int data;
+	struct node* RL;
+	struct node *LL;
+}node;
+struct node *head=NULL;
+void insert(int ele);
+void print();
+void maximumelemnt();
+void posofmin();
+void main()
+{
+	int i,n,pos,ele;
+	printf("Input the number of nodes:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&ele);
+		insert(ele);
+	}
+	printf("After insertion the new list are:\n");
+	print();
+	maximumelement();
+	posofmin();
+}
+void insert(int ele)
+{
+	node *newn=(node *)malloc(sizeof(node));
+	newn->data=ele;
+	if(head==NULL)
+	{
+		newn->RL=head;
+		newn->LL=head;
+		head=newn;
+	}
+	else
+	{
+		node *itr=head;
+		while(itr->RL!=NULL)
+		{
+			itr=itr->RL;
+		}
+		itr->RL=newn;
+		newn->LL=itr;
+		newn->RL=NULL;
+		
+	}
+}
+void print()
+{
+	node *temp=(node *)malloc(sizeof(node));
+	temp=head;
+	while(temp!=NULL)
+	{
+		printf("%d\n",temp->data);
+		temp=temp->RL;
+	}
+}
+void maximumelement()
+{
+	int temp;
+	temp=head->data;
+	node *itr=head;
+	while(itr!=NULL)
+	{
+		if(itr->data>temp)
+		{
+			temp=itr->data;
+		}
+		itr=itr->RL;
+	}
+	printf("maximum element is %d",temp);
+}
+void posofmin()
+{
+	int temp,pos=1;
+	temp=head->data;
+	node *itr=head;
+	while(itr!=NULL)
+	{
+		if(temp>itr->data)
+		{
+			temp=itr->data;
+		}
+		itr=itr->RL;
+	}
+	itr=head;
+	while(itr!=NULL)
+	{
+		if(temp==itr->data)
+		{
+			printf("\nposition of min element is %d",pos);
+			return;
+		}
+		pos++;
+		itr=itr->RL;
+
+	}
+}
+output:
+Input the number of nodes:5
+3
+8
+9
+2
+6
+After insertion the new list are:
+3
+8
+9
+2
+6
+maximum element is 9
+position of min element is 4
+--------------------------------

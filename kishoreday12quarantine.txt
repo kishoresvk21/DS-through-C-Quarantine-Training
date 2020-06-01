@@ -1,0 +1,107 @@
+1.
+#include<stdio.h>
+void main()
+{
+	int n,a[]={4,1,5,3,2};
+	n=sizeof(n)/sizeof(a[0]);
+	insertionsort(a[],n);
+	
+}  
+void insertionsort(int a[],int n)
+{
+	int i,j,key;
+	for(i=1;i<n;i++)
+	{
+		key=a[i];
+		j=i-1;
+		while(j>=0 && a[j]>key)
+		{
+			a[j+1]=a[j];
+			j=j-1;
+		}
+		a[j+1]=key;
+		
+	}
+	for(i=0;i<n;i++)
+	{
+		printf("%d",a[i]);
+	}
+}
+2.
+#include <stdio.h>
+int main()
+{
+  int array[100], n, c, d, swap;
+   scanf("%d", &n);
+  printf("%d", n);
+  for (c = 0; c < n; c++)
+    scanf("%d", &array[c]);
+  for (c = 0 ; c < n - 1; c++)
+  {
+    for (d = 0 ; d < n - c - 1; d++)
+    {
+      if (array[d] > array[d+1])       {
+        swap       = array[d];
+        array[d]   = array[d+1];
+        array[d+1] = swap;
+      }
+    }
+  }
+   for (c = 0; c < n; c++)
+     printf("%d\n", array[c]);
+  return 0;
+}
+3.
+#include <stdio.h>
+void quicksort (int [], int, int);
+int main()
+{
+    int list[50];
+    int size, i;
+     scanf("%d", &size); 
+    
+    for (i = 0; i < size; i++)
+    {
+        scanf("%d", &list[i]);
+    } 
+    quicksort(list, 0, size - 1);
+    printf("After applying quick sort\n");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d ", list[i]);
+    }
+    printf("\n");
+    return 0;
+}
+void quicksort(int list[], int low, int high)
+{
+    int pivot, i, j, temp;
+    if (low < high)
+    {
+        pivot = low;
+        i = low;
+        j = high;
+        while (i < j) 
+        {
+            while (list[i] <= list[pivot] && i <= high)
+            {
+                i++;
+            }
+            while (list[j] > list[pivot] && j >= low)
+            {
+                j--;
+            }
+            if (i < j)
+            {
+                temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+        temp = list[j];
+        list[j] = list[pivot];
+        list[pivot] = temp;
+        quicksort(list, low, j - 1);
+        quicksort(list, j + 1, high);
+    }
+}

@@ -1,0 +1,99 @@
+3.
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct list
+{
+	int data;
+	struct list *link;
+}node;
+void main()
+{
+	int n,i;
+	printf("Enter n value:\n");
+	scanf("%d",&n);
+	node *start=NULL;
+	node *new=NULL;
+	node *temp=NULL;
+	for(i=0;i<n;i++)
+	{
+	    new=(node *)malloc(sizeof(node));
+		scanf("%d",&new->data);
+		if(i==0)
+		{
+			start=temp=new;
+		}
+		else
+		{
+			temp->link=new;
+			temp=new;
+		}
+	}
+	temp->link=NULL;
+	temp=start;
+	while(temp!=NULL)
+	{
+		printf("%d",temp->data);
+		temp=temp->link->link;
+	}
+}
+output:
+Enter n value:
+5
+9
+6
+8
+4
+10
+Elements at odd positions:
+9       8       10
+2.
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int data;
+	struct node *link;
+}node;
+void main()
+{
+	int n,i,count=0;
+	node *start=NULL;
+	node *new=NULL;
+	node *temp=NULL;
+	printf("ENter n value:\n");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		new=(node *)malloc(sizeof(node));
+		scanf("%d",&new->data);
+		if(i==0)
+		{
+			start=temp=new;
+		}
+		else
+		{
+			temp->link=new;
+			temp=new;
+		}
+	}
+	temp->link=NULL;
+	temp=start;
+	while(temp!=NULL)
+	{
+		count++;
+		temp=temp->link;
+	}
+	printf("%d",count);
+}
+
+output:
+ENter n value:
+5
+1
+2
+3
+4
+5
+5
+
+1.

@@ -1,0 +1,113 @@
+#include <stdio.h>
+void main()
+{
+	char s[20],test[20];	
+	int count1=0,count2=0,i,j,temp;
+        fgets(str, sizeof str, stdin);
+	fgets(search, sizeof search, stdin);
+	while (s[count1]!='\0')
+		count1++;
+                count1--;
+	while (test[count2]!='\0')
+		count2++;
+                count2--;
+	for(i=0;i<=count1-count2;i++)
+	{ 
+		for(j=i;j<i+count2;j++)
+		{
+			temp=1;
+			if (s[j]!=test[j-i])
+			{
+				test=0;
+			   break;
+			}
+		}
+		if (test==1)
+			break;
+	}
+	if (test==1)
+		printf(" its a substring");
+	else
+		printf("its not substring");
+}
+
+2.
+#include <stdio.h>
+#include <string.h>
+int check(char *s,char *w)
+{
+    int n,a[1000],i,j,k=0,l,found=0,t=0;
+    for(i=0;s[i];i++)
+    {
+    	if(s[i]==' ')
+    	{
+    		a[k++]=i;
+		}
+	}
+	a[k++]=i;
+	j=0;
+	for(i=0;i<k;i++)
+	{
+		n=a[i]-j;
+		if(n==strlen(w))
+		{
+			t=0;
+			for(l=0;w[l];l++)
+			{
+				if(s[l+j]==w[l])
+				{
+					t++;
+				}
+			}
+			if(t==strlen(w))
+		    {
+				found++;		 
+		    }
+		}
+		j=a[i]+1;
+	}
+    return found;	
+}
+int main()
+{
+    char s[30],w[30]; 
+    int n; 
+    gets(s);
+    gets(w);
+    n=check(s,w);     
+    printf("%d",n);
+}
+
+3.
+#include <stdio.h>  
+#include <string.h>  
+int main()  
+{     
+    char string[];  
+    char words[100][100], small[100], large[100];  
+    scanf("%c",&string[k]);
+    int i = 0, j = 0, k, length;   
+    for(k=0; string[k]!='\0'; k++){    
+        if(string[k] != ' ' && string[k] != '\0'){  
+            words[i][j++] = string[k];  
+        }  
+        else{  
+            words[i][j] = '\0';    
+            i++;   
+            j = 0;  
+        }  
+    }  
+    length = i + 1;  
+    strcpy(small, words[0]);  
+    strcpy(large, words[0]);  
+    for(k = 0; k < length; k++){  
+        if(strlen(small) > strlen(words[k])){  
+            strcpy(small, words[k]);  
+        }  
+        if(strlen(large) < strlen(words[k]))  
+            strcpy(large, words[k]);  
+    }  
+    printf("Smallest word: %s\n", small);  
+    printf("Largest word: %s", large);     
+    return 0;  
+}   

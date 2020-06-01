@@ -1,0 +1,100 @@
+::PROGRAMS::
+
+1.HAPPY NUMBER:
+
+#include<stdio.h>
+void main()
+{
+	int n,t=0,sum=0;
+	scanf("%d",&n);
+	while(n!=1){
+	    sum=0;
+		while(n>0)
+		{
+			t=n%10;
+			sum+=t*t;
+			n=(int)n/10;
+		}
+		n=sum;
+		if(sum<=9)
+		{
+			if(sum==1){
+				printf("HAPPY NUMBER:");
+				break;
+			}
+			else
+			{
+				printf("NOT A HAPPY NUMBER");
+				break;
+			}
+			
+		}
+		
+	}
+}
+
+2.ABUNDANT NUMBER:
+
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i,sum=0;
+	scanf("%d",&n);
+	for(i=1;i<n;i++)
+	{
+		if(n%i==0)
+		{
+			sum+=i;
+		}
+	}
+	if(sum>n)
+	{
+		printf("ABUNDANT NUMBER:");
+	}
+	else
+	{
+		printf("NOT AN ABUNDANT NUMBER");
+	}
+}
+
+3.DECIMAL TO HEXA-DECIMAL:
+
+#include<stdio.h>
+void main()
+{
+	int i,count;
+	long n,temp;
+	char res[30];
+	scanf("%ld",&n);
+	while(n!=0)
+	{
+		temp=n%16;
+		if(temp<10)
+		{
+			res[count++]=48+temp;
+		}
+		else
+		{
+			res[count++]=55+temp;
+		}
+		n=n/16;
+	}
+	for(i=count;i>0;i--)
+	{
+		printf("%c",res[i]);
+	}
+}
+
+::APTITUDE::
+
+1.MONDAY
+2.24
+3.NOVEMBER
+4.8
+5.MONDAY
+6.8pm
+7.4.54am
+8.15
+9.24
+10.6

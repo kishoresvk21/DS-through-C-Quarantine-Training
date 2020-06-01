@@ -1,0 +1,137 @@
+							:::PROGRAMS:::
+1.n numbers:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		printf("%d\n",i);
+	}
+}
+2.sum of n:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i,sum=0;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		sum+=i;
+	}
+	printf("%d",sum);
+}
+
+3.even sum :
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i,sum=0;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		if(i%2==0)
+		{
+			sum+=i;
+		}
+	}
+	printf("%d",sum);
+}
+4.odd sum:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i,sum=0;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		if(i%2!=0)
+		{
+			sum+=i;
+		}
+	}
+	printf("%d",sum);
+}
+
+5.sum of numbers divided by 3 or 5:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i,sum=0;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		if(i%3==0 ||i%5==0)
+		{
+			sum+=i;
+		}
+	}
+	printf("%d",sum);
+}
+6.gcd/lcm:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int a,b,k;
+	scanf("%d %d",&a,&b);
+	k=gcd(a,b);
+	printf("GCD is:%d",k);
+	printf("LCM is:%d",lcm(a,b));
+}
+int gcd(int a,int b)
+{
+	if(a==0)
+	{
+		return b;
+	}
+	else if(b==0)
+	{
+		return a;
+	}
+	else
+	{
+		gcd(b,a%b);
+	}
+}
+int lcm(int a,int b)
+{
+	return ((a*b)/gcd(a,b));
+}
+7.factorial:
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n;
+	scanf("%d",&n);
+	printf("%d",factorial(n));
+}
+int factorial(int n)
+{
+	if(n==0)
+	{
+		return 1;
+	}
+	else
+	{
+		return n*factorial(n-1);
+	}
+}
+							:::APTITUDE:::
+1.man(son)
+2.paternal uncle
+3.maternal aunt/uncle
+4.B,C
+5.2
+6.18
+7.143547
+8.N-E
+9.EAST
+10.NORTH

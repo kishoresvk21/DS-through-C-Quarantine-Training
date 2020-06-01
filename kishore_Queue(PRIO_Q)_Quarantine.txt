@@ -1,0 +1,269 @@
+1.
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int data;
+	struct node *link;
+}node;
+struct node *head=NULL;
+struct node *front=NULL;
+struct node *rear=NULL;
+void enqueue(int ele);
+void dequeue();
+void count();
+void minmax();
+void search(int ele);
+void print();
+void main()
+{
+	int i,sel,ele;
+	printf("\nselect an option :\n");
+	printf("1.Add items\n");
+	printf("2.Delete items\n");
+	printf("3.show the number of items\n");
+	printf("4.show min and max items\n");
+	printf("5.find an item\n");
+	printf("6.print all items\n");
+	scanf("%d",&sel);
+	switch(sel)
+	{
+	case 1:
+		scanf("%d",&ele);
+		enqueue(ele);
+		break;
+	case 2:
+		dequeue();
+		break;
+	case 3:
+		count();
+		break;
+	case 4:
+		minmax();
+		break;
+	case 5:
+		scanf("%d",&ele);
+		search(ele);
+		break;
+	case 6:
+		print();
+		break;
+	default:
+		printf("Entered wrong option\n");
+	}
+	if(sel>=1 &&sel<=6)
+	{
+		main();
+	}
+
+}
+void enqueue(int ele)
+{
+	node *newnode=(node *)malloc(sizeof(node));
+	newnode->data=ele;
+	if(head==NULL)
+	{
+		head=newnode;
+		newnode->link=NULL;
+		rear=newnode;
+		front=newnode;
+	}
+	else
+	{
+		node *temp=head;
+		while(temp->link!=NULL)
+		{
+			temp=temp->link;
+		}
+		temp->link=newnode;
+		newnode->link=NULL;
+		rear=newnode;
+	}
+}
+void print()
+{
+	node *temp=head;
+	while(temp!=NULL)
+	{
+		printf("%d",temp->data);
+		temp=temp->link;
+	}
+}
+void dequeue()
+{
+	if(head==NULL)
+	{
+		printf("is empty");
+	}
+	else
+	{
+		node *temp=head;
+		head=temp->link;
+		front=head;
+		free(temp);
+		
+	}
+	
+	
+}
+void count()
+{
+	int count=0;
+	node *temp=head;
+	while(temp!=NULL)
+	{
+		count++;
+		temp=temp->link;
+	}
+	printf("THE COUNT IS :%d",count);
+}
+void minmax()
+{
+	int min,max;
+	node *temp=head;
+	min=temp->data;
+	max=temp->data;
+	while(temp!=NULL)
+	{
+		if(temp->data<min)
+		{
+			min=temp->data;
+		}
+		if(temp->data>max)
+		{
+			max=temp->data;
+		}
+		temp=temp->link;
+	}
+	printf("%d is min,%d is max",min,max);
+}
+void search(int ele)
+{
+	int pos=0;
+	node *temp=head;
+	while(temp!=NULL)
+	{
+		pos++;
+		if(ele==temp->data)
+		{
+			printf("the element %d is found at %d position",ele,pos);
+		}
+		temp=temp->link;
+	}
+}
+2.
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int data;
+	int pri;
+	struct node *link;
+}node;
+struct node *head=NULL;
+struct node *front=NULL;
+struct node *rear=NULL;
+void enqueue(int ele,int priority);
+int posofminpriority();
+void dequeue(int pos);
+void print();
+void main()
+{
+	int i,n,ele,priority,delpos;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("Element with priority:\n");
+		scanf("%d %d",&ele,&priority);
+		enqueue(ele,priority);
+	}
+	delpos=posofminpriority();
+	dequeue(delpos);
+	print();
+	delpos=posofminpriority();
+	dequeue(delpos);
+	print();
+}
+void enqueue(int ele,int priority)
+{
+	node *newnode=(node *)malloc(sizeof(node));
+	newnode->data=ele;
+	newnode->pri=priority;
+	if(head==NULL)
+	{
+		head=newnode;
+		newnode->link=NULL;
+		rear=newnode;
+		front=newnode;
+	}
+	else
+	{
+		node *temp=head;
+		while(temp->link!=NULL)
+		{
+			temp=temp->link;
+		}
+		temp->link=newnode;
+		newnode->link=NULL;
+		rear=newnode;
+	}
+}
+void print()
+{
+	node *temp=head;
+	while(temp!=NULL)
+	{
+		printf("%d->pri:%d\n",temp->data,temp->pri);
+		temp=temp->link;
+	}
+}	
+int posofminpriority()
+{
+	int i,T,count=0;
+	node *temp=head;
+	T=temp->pri;
+	while(temp!=NULL)
+	{
+		if(temp->pri<=T)
+		{
+			T=temp->pri;
+		}
+		count++;
+		temp=temp->link;
+	}
+	temp=head;
+	for(i=1;i<=count;i++)
+	{
+		if(temp->pri==T)
+		{
+			return i;
+		}
+		temp=temp->link;
+	}
+}
+void dequeue(int pos)
+{
+	int i;
+	if(head==NULL)
+	{
+		printf("is empty");
+	}
+	else
+	{
+		node *temp=head;
+		node *T;
+		if(pos==1)
+		{
+			head=temp->link;
+			free(temp);
+			return;
+		}
+		for(i=0;i<pos-2;i++)
+		{
+			temp=temp->link;
+		}
+		T=temp->link;
+		temp->link=T->link;
+		free(T);
+	}
+}

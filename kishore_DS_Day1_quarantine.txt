@@ -1,0 +1,131 @@
+#include<stdio.h>
+void transpose(int a[40][40],int m1,int n1);
+void multiplication(int a[40][40],int b[40][40],int m1,int n1,int m2,int n2);
+void addition(int a[40][40],int b[40][40],int m1,int n1,int m2,int n2);
+void main()
+{
+	int i,j,m1,n1,m2,n2;
+	int a[40][40],b[40][40];
+	printf("Enter row m1 and n1:\n");
+	scanf("%d %d",&m1,&n1);
+	printf("Enter row m2 and n2:\n");
+	scanf("%d %d",&m2,&n2);
+	printf("Enter %d elements as %d and %d:\n",m1*n1,m1,n1);
+	for(i=0;i<m1;i++)
+	{
+		for(j=0;j<n1;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("Enter %d elements as %d and %d\n",m2*n2,m2,n2);
+	for(i=0;i<m2;i++)
+	{
+		for(j=0;j<n2;j++)
+		{
+			scanf("%d",&b[i][j]);
+		}
+	}
+	addition(a,b,m1,n1,m2,n2);
+	transpose(a,m1,n1);
+	multiplication(a,b,m1,n1,m2,n2);
+
+}
+void transpose(int a[40][40],int m1,int n1)
+{
+	int i,j,c[m1][n1];
+	for(i=0;i<m1;i++)
+	{
+		for(j=0;j<n1;j++)
+		{
+			c[i][j]=a[j][i];
+		}
+	}
+	printf("The matrix after transpose is:\n");
+	for(i=0;i<m1;i++)
+	{
+		for(j=0;j<n1;j++)
+		{
+			printf("%d\t",c[i][j]);
+		}
+		printf("\n");
+	}
+}
+void addition(int a[40][40],int b[40][40],int m1,int n1,int m2,int n2)
+{
+	int i,j,c[m1][n1];
+	if(m1==m2 &&n1==n2)
+	{
+		for(i=0;i<m1;i++)
+		{
+			for(j=0;j<n1;j++)
+			{
+				c[i][j]=a[i][j]+b[i][j];
+			}
+		}
+		printf("Matrix addition is:\n");
+		for(i=0;i<m1;i++)
+		{
+			for(j=0;j<n1;j++)
+			{
+				printf("%d\t",c[i][j]);
+			}
+			printf("\n");
+		}
+
+	}
+}
+void multiplication(int a[40][40],int b[40][40],int m1,int n1,int m2,int n2)
+{
+	int i,j,k,c[m1][n2];
+	if(n1==m2)
+	{
+		for(i=0;i<m1;i++)
+		{
+			for(j=0;j<n2;j++)
+			{
+				c[i][j]=0;
+			}
+		}
+		for(i=0;i<m1;i++)
+		{
+			for(j=0;j<n2;j++)
+			{
+				for(k=0;k<n1;k++)
+				{
+					c[i][j]+=a[i][k]*b[k][j];
+				}
+			}
+		}
+		printf("The matrix multiplication is:\n");
+		for(i=0;i<m1;i++)
+		{
+			for(j=0;j<n2;j++)
+			{
+				printf("%d\t",c[i][j]);
+			}
+			printf("\n");
+		}
+	}
+}
+
+output:
+Enter row m1 and n1:
+2 2
+Enter row m2 and n2:
+2 2
+Enter 4 elements as 2 and 2:
+1 2 
+3 4
+Enter 4 elements as 2 and 2
+1 1 
+1 1
+Matrix addition is:
+2       3
+4       5
+The matrix after transpose is:
+1       3
+2       4
+The matrix multiplication is:
+3       3
+7       7
