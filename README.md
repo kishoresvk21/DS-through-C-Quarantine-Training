@@ -1,2 +1,1 @@
-# demoproz
-a demo
+Daily Coding And Aptitude Answers
